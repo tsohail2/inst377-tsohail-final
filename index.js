@@ -11,8 +11,12 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+//const supabaseUrl = process.env.SUPABASE_URL;
+//const supabaseKey = process.env.SUPABASE_KEY;
+
+const supabaseUrl = 'https://skgubvyhbjqoaoppsgdo.supabase.co';
+const supabaseKey = 'sb_publishable_6bekHz1oKqI5bY6CnsLZng_MNcvfVvz';
+
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
 
 app.get('/', (req, res) => {
@@ -71,4 +75,55 @@ app.post('/customer', async (req, res) => {
 
 app.listen(port, () => {
   console.log(`App is available on port: ${port}`);
+});
+
+
+
+
+
+
+
+app.get('/api/test', (req, res) => {
+  res.json({ message: "This is a test api" });
+});
+
+
+app.get('/api/data', async (req, res) => {
+  console.log('Attempting to get db!');
+
+  const { data, error } = await supabase.from('links').select();
+
+  if (error) {
+    console.log(`Error: ${error}`);
+    res.statusCode = 500;
+    res.send(error);
+  } else {
+    console.log('Recieved Data:', data.length);
+    res.json(data);
+  }
+});
+
+app.post('/api/send', async (req, res) => {
+  console.log('Adding Customer');
+  console.log(`Request: ${JSON.stringify(req.body)}`);
+
+  const link = req.body.link;
+  const which = req.body.which;
+
+
+  const { data, error } = await supabase
+    .from('links')
+    .insert({
+      link: link,
+      which: which,
+    })
+    .select();
+
+    if (error) {
+      console.log(`Error: ${error}`);
+      res.statusCode = 500;
+      res.send(error);
+    } else {
+      res.json(data);
+    }
 });

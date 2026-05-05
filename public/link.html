@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check Link</title>
+    <title>Check your link</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="myscript.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="link.js"></script>
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <div class="logo">CyberSide</div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="link.html">Projects</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="#" class="btn">Contact</a></li>
-        </ul>
-      </nav>
+
+  <nav class="navbar">
+      <div class="logo">CyberSide</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="link.html">Check your link</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+  </nav>
+
+
+  <div class="formcon">
+
+    <form onsubmit="fetcher(); return false">
+
+      <h1>Please enter your link!</h1>
+      <div class="formcon"><input type="text" id="link" required></div>
+      
+      <br>
+
+      <br>
+      <br>
+
+      <div class="formcon"><button class="button-58" id="button">Submit</button></div>
+
+    </form>
+
+  </div>
+    
 
 </body>
