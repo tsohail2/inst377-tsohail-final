@@ -1,4 +1,4 @@
-const apiKey = "AIzaSyAHEfsZPtrI-lt_LDZN0hlSPpkdN54PnnU";
+const apiKey = key.apiKey
 
 const arr = []
 
