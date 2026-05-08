@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <script src="myscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="about.js"></script>
 </head>
 
 <body>
@@ -20,16 +21,74 @@
         </ul>
     </nav>
 
-    <header>
+    <div class="center">
 
-      <h1>About CyberSide</h1>
+      <header>
 
-    </header>
+        <h1>About CyberSide</h1>
+  
+      </header>
+  
+      
 
-    <main>
+    </div>
 
-      <h2></h2>
-          
-    </main>
+    <div class="center">
+
+      <div style="width: 800px;">
+        <canvas id="myChart"></canvas>
+      </div>
+
+    </div>
+
+    <div class="center">
+
+      <main>
+
+        <div class="center">
+
+          <h2>The graph speaks for itself...</h2>
+
+        </div>
+       
+
+        <p style="width: 600px">Within the last few years cyber attacks have been on a sharp rise, 
+        once information systems were seen as not only an exploitable resource, but also a means 
+        for organizations to function, criminals had a new target.</p>
+
+        <p style="width:600px">CyberSide was created as a minimal way to defend people against that 
+        through a way to check what you are visitng. Utilizing Googles Safe Browsing API, 
+        we are able to use their advanced threat database to check your links.</p>
+
+        <p style="width:600px">You upload your link, we send it to Google to check it out for you.
+        Once we send your link it gets checked, and then the important info is sent back for us
+        and we can give you an accurate way to proceed</p>
+
+      </main>
+
+    </div>
+
+    <script>
+
+      const ctx = document.getElementById('myChart');
+
+      new Chart(ctx, {
+        type: 'bar', 
+        data: {
+          labels: ['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017'],
+          datasets: [{
+            backgroundColor: '#D7191C',
+            borderColor: 'darkred',
+            label: '# of Attacks in Millions',
+            data: [30, 40, 50, 60, 70, 190, 340, 470, 590, 600],
+            borderWidth: 1
+          }]
+        }
+      })
+
+    </script>
+    
 
 </body>
+
+</html>

@@ -43,9 +43,15 @@ h1 {
 }
 
 
-.formcon {
-  display: grid;
-  place-items: center; 
+
+.center {
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+}
+
+form {
+  text-align: center;
 }
 
 .mybox {
