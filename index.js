@@ -11,11 +11,10 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-//const supabaseUrl = process.env.SUPABASE_URL;
-//const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_KEY;
+const apiKey = process.env.apiKey;
 
-const supabaseUrl = 'https://skgubvyhbjqoaoppsgdo.supabase.co';
-const supabaseKey = 'sb_publishable_6bekHz1oKqI5bY6CnsLZng_MNcvfVvz';
 
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
 

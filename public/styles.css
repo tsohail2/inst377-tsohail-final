@@ -61,6 +61,7 @@ form {
   border: 2px solid navy;
   padding: 20px;
   background-color: #EEDEC5;
+  text-align: center;
 }
 
 .mybutton {
@@ -68,9 +69,9 @@ form {
   width: 420px;
   margin: 24px auto;
   text-align: center;
-  border: 1px solid #1a237e;
+  border: 1px solid navy;
   padding: 24px 32px;
-  background-color: #fdf6ee;
+  background-color: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }

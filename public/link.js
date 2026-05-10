@@ -19,17 +19,25 @@ async function checkURL() {
     if(result == 'malware') {
         //console.log("found in arr")
 
+        displayResult('mal')
+
         return
     } else if(result == 'social engineering') {
         //console.log("found in arr")
+
+        displayResult('soc')
 
         return
     } else if(result == 'unwanted software') {
         //console.log("found in arr")
 
+        displayResult('us')
+
         return
     } else if(result == 'safe') {
         //console.log("found in arr")
+
+        displayResult('safe')
        
         return
     } 
@@ -99,6 +107,8 @@ async function checkURL() {
 
         arr.push({ link: urll, which: 'malware' })
 
+        displayResult('mal')
+
     } else if (data2.matches) {
         console.log(data2.matches[0].threatType.toLowerCase())
 
@@ -106,12 +116,16 @@ async function checkURL() {
 
         arr.push({ link: urll, which: 'social engineering' })
 
+        displayResult('soc')
+
     } else if (data3.matches) {
         console.log(data3.matches[0].threatType.toLowerCase())
 
         sendmaldata("unwanted software")
 
         arr.push({ link: urll, which: 'unwanted software' })
+
+        displayResult('us')
 
     } else {
 
@@ -123,6 +137,8 @@ async function checkURL() {
 
         console.log(arr)
 
+        displayResult('safe')
+
     }
     
     
@@ -130,6 +146,59 @@ async function checkURL() {
 
 function displayResult(ver) {
 
+  const container = document.getElementById("box")
+
+  if(ver == 'mal') {
+    const title = document.getElementById("title")
+    title.innerHTML = 'This link has been flagged for malware!'
+    title.style.color = 'red'
+
+    const what = document.getElementById("what")
+    what.innerHTML = 'Defenition: It is sofware that acts as a computer virus, and one of the most dangerous software online'
+
+    const fix = document.getElementById("fix")
+    fix.innerHTML = 'Do NOT go to this link, this link will infect your computer and cause irrepreable damage'
+
+    container.style.display = 'block'
+  } else if(ver == 'soc') {
+    const title = document.getElementById("title")
+    title.innerHTML = 'This link has been flagged for social engineering!'
+    title.style.color = 'red'
+
+    const what = document.getElementById("what")
+    what.innerHTML = 'Defenition: This link will try to decieve you to steal information'
+
+    const fix = document.getElementById("fix")
+    fix.innerHTML = 'Do NOT go to this link, this link will lie to you and take your info'
+
+    container.style.display = 'block'
+  } else if(ver == 'us') {
+    const title = document.getElementById("title")
+    title.innerHTML = 'This link has been flagged for unwanted software!'
+    title.style.color = 'red'
+
+    const what = document.getElementById("what")
+    what.innerHTML = 'Defenition: This will put software on your computer that will slow it down'
+
+    const fix = document.getElementById("fix")
+    fix.innerHTML = 'Do NOT go to this link, this link will infect your computer and cause a large issue with your machine'
+
+    container.style.display = 'block'
+  } else if(ver == 'safe') {
+    const title = document.getElementById("title")
+    title.innerHTML = 'This link is possibly safe'
+    title.style.color = 'green'
+
+    const what = document.getElementById("what")
+    what.innerHTML = 'Defenition: This link has a lower chance of causing any major issues'
+
+    const fix = document.getElementById("fix")
+    fix.innerHTML = 'This link seems safe, just keep your eye out for any strange intracies, and do not share your password with anyone'
+
+    container.style.display = 'block'
+
+  }
+  
 }
 
 
