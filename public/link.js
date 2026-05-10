@@ -42,7 +42,7 @@ async function checkURL() {
         return
     } 
 
-    const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
+    //const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
   
 
     const resp = await fetch('/api/fetcher', {
