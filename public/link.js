@@ -45,60 +45,16 @@ async function checkURL() {
     const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
   
 
-    const fetch1 = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          client: {
-            clientId: "malcheck",
-            clientVersion: "0.0"
-          },
-          threatInfo: {
-            threatTypes: ["MALWARE"],
-            platformTypes: ["ANY_PLATFORM"],
-            threatEntryTypes: ["URL"],
-            threatEntries: [{ url: urll }]
-          }
-        })
-      });
-
-    const fetch2 = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            client: {
-              clientId: "malcheck",
-            clientVersion: "0.0"
-            },
-            threatInfo: {
-              threatTypes: ["SOCIAL_ENGINEERING"],
-              platformTypes: ["ANY_PLATFORM"],
-              threatEntryTypes: ["URL"],
-              threatEntries: [{ url: urll }]
-            }
-        })
-    });
-
-    const fetch3 = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          client: {
-            clientId: "malcheck",
-            clientVersion: "0.0"
-          },
-          threatInfo: {
-            threatTypes: ["UNWANTED_SOFTWARE"],
-            platformTypes: ["ANY_PLATFORM"],
-            threatEntryTypes: ["URL"],
-            threatEntries: [{ url: urll }]
-          }
-        })
-      });
+    const resp = await fetch('/api/fetcher', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: urll })
+    }).then(res => res.json());
+    
+    const data1 = resp.data1;
+    const data2 = resp.data2;
+    const data3 = resp.data3;
   
-    const data1 = await fetch1.json();
-    const data2 = await fetch2.json();
-    const data3 = await fetch3.json();
   
     if(data1.matches) {
         console.log(data1.matches[0].threatType.toLowerCase())

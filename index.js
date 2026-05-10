@@ -126,3 +126,67 @@ app.post('/api/send', async (req, res) => {
       res.json(data);
     }
 });
+
+
+app.post('/api/fetcher', async (req, res) => {
+  const urll = req.body.url;
+  
+  const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${process.env.apiKey}`;
+
+  const fetch1 = await fetch(apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      client: {
+        clientId: "malcheck",
+        clientVersion: "0.0"
+      },
+      threatInfo: {
+        threatTypes: ["MALWARE"],
+        platformTypes: ["ANY_PLATFORM"],
+        threatEntryTypes: ["URL"],
+        threatEntries: [{ url: urll }]
+      }
+    })
+  });
+
+  const fetch2 = await fetch(apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      client: {
+        clientId: "malcheck",
+      clientVersion: "0.0"
+      },
+      threatInfo: {
+        threatTypes: ["SOCIAL_ENGINEERING"],
+        platformTypes: ["ANY_PLATFORM"],
+        threatEntryTypes: ["URL"],
+        threatEntries: [{ url: urll }]
+        }
+      })
+  });
+
+  const fetch3 = await fetch(apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      client: {
+        clientId: "malcheck",
+        clientVersion: "0.0"
+      },
+      threatInfo: {
+        threatTypes: ["UNWANTED_SOFTWARE"],
+        platformTypes: ["ANY_PLATFORM"],
+        threatEntryTypes: ["URL"],
+        threatEntries: [{ url: urll }]
+        }
+      })
+  });
+
+  const data1 = await fetch1.json();
+  const data2 = await fetch2.json();
+  const data3 = await fetch3.json();
+
+  res.json({ data1, data2, data3 });
+});
