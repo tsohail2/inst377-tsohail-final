@@ -1,4 +1,4 @@
-//const apiKey = key.apiKey
+
 
 const arr = []
 
@@ -42,10 +42,8 @@ async function checkURL() {
         return
     } 
 
-    //const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`;
-  
 
-    const resp = await fetch('/api/fetcher', {
+    const resp = await fetch('/fetcher', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url: urll })
@@ -162,7 +160,7 @@ async function sendmaldata(which) {
 
     console.log("attempting to send info")
 
-    await fetch(`/api/send`, {
+    await fetch(`/send`, {
       method: 'POST',
       body: JSON.stringify({
         link: `${document.getElementById('link').value}`,
@@ -180,7 +178,7 @@ async function sendmaldata(which) {
 
 
 async function loadmaldata() {
-    await fetch('/api/data')
+    await fetch('/data')
       .then((result) => result.json())
       .then((resultJson) => {
         //console.log(resultJson)

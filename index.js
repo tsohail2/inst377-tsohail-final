@@ -82,12 +82,12 @@ app.listen(port, () => {
 
 
 
-app.get('/api/test', (req, res) => {
+app.get('/test', (req, res) => {
   res.json({ message: "This is a test api" });
 });
 
 
-app.get('/api/data', async (req, res) => {
+app.get('/data', async (req, res) => {
   console.log('Attempting to get db!');
 
   const { data, error } = await supabase.from('links').select();
@@ -102,7 +102,7 @@ app.get('/api/data', async (req, res) => {
   }
 });
 
-app.post('/api/send', async (req, res) => {
+app.post('/send', async (req, res) => {
   console.log('Adding Customer');
   console.log(`Request: ${JSON.stringify(req.body)}`);
 
@@ -128,7 +128,7 @@ app.post('/api/send', async (req, res) => {
 });
 
 
-app.post('/api/fetcher', async (req, res) => {
+app.post('/fetcher', async (req, res) => {
   const urll = req.body.url;
   
   const apiUrl = `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${process.env.apiKey}`;
