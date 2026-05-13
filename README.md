@@ -26,6 +26,8 @@ If certain tests need to be made to test things like the backend however, hardco
 
 Furthermore, ensure there is a test database that can be used, it would make things significantly easier. When mixing a production and testing database, it gets messy if testing needs to occur, and users have already used certain links.
 
+If any testing is needed to check for specific kinds of links refer to the bottom of the page, which shows testing links from the api documentation.
+
 ## Relevant APIs/Endpoints
 The main API that this website uses to do all of its functions is the Google Safe Browsing API (Documentation: https://developers.google.com/safe-browsing/reference). It is a public API that can be used so long as a website is not generating profit through what it does. The point of this API is to pull from Google's database of known malicious links, and determine if the passed in link is safe or not. The database categorizes the links into 4 different threat types, this website only fetches for the type malware, social engineering, and unwanted software. Three fetches are made to the API and the resulting fetch helps to determine what kind of malicous software the link has. If none of the fetches return anything, the link is implied to be possibly safe. Check out index.js and link.js to really understand how that shakes out on the code/logic side. This is done through a POST request, and requires an API key that can be made near the same link that is referenced abovr for the API. 
 
@@ -43,5 +45,3 @@ Malware http://malware.testing.google.test/testing/malware/
 Social Engineering http://phishing.testing.google.test/testing/phishing/
 
 Unwanted Software http://testsafebrowsing.appspot.com/s/unwanted.html
-
-Potentially Harmful App http://pha.testing.google.test/testing/pha/
