@@ -54,7 +54,7 @@ async function checkURL() {
     const data3 = resp.data3;
   
   
-    if(data1.matches) {
+    if(data1) {
         console.log(data1.matches[0].threatType.toLowerCase())
 
         sendmaldata("malware")
@@ -63,7 +63,7 @@ async function checkURL() {
 
         displayResult('mal')
 
-    } else if (data2.matches) {
+    } else if (data2) {
         console.log(data2.matches[0].threatType.toLowerCase())
 
         sendmaldata("social engineering")
@@ -72,7 +72,7 @@ async function checkURL() {
 
         displayResult('soc')
 
-    } else if (data3.matches) {
+    } else if (data3) {
         console.log(data3.matches[0].threatType.toLowerCase())
 
         sendmaldata("unwanted software")
