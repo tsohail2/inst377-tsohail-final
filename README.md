@@ -1,6 +1,12 @@
 # CyberSide Documentation
 ### By: Talha Sohail
+## Description of the project
+Cyberside serves as a web application that can be used to validate links that users want to visit. It routes links through the Google Safe Browsing API and helps determine the links safety. It also wants to give general cybersecurity tips for people who may not really understand how to keep themselves safe on the internet.The home screen has a few tips, and when people visit the links they get a little general idea on staying safe with malicious links. While a link checker in this sense might not be the best solution, its a start, and its how things could snowball into people being really safe.
 
+It is not a site that has perfect verdict for safety when it comes to links however, Google has their own limitations with what they know and don't know, and websites and services are hijacked and turned on the drop of a dime. So whatever verdict happens, users need to express caution. None of it can be used as some kind of one stop guide for if every single link is safe or not.
+
+## Target Browsers
+This application is meant to only be used on computers, as that would be the easiest workflow for the website to be used around. So that leads to a very specific set of browsers that it would work on; Google, Microsoft Edge, Brave, Firefox, and Safari. It has all the modern JS and CSS to be used on these interchangably.
 
 
 # Developer Manual
